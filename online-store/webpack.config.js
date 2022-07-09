@@ -38,18 +38,19 @@ module.exports = {
   },
 
   devServer: {
-    hot: true,
+    static: path.resolve(__dirname, './dist'),
   },
 
   module: {
-    rules: [{
-        test: /\.[tj]sx?$/i,
-        use: 'ts-loader',
-        exclude: /node_modules/,
-      },
+    rules: [
       {
         test: /\.(html)$/i,
         use: 'html-loader',
+      },
+      {
+        test: /\.[tj]sx?$/i,
+        use: 'ts-loader',
+        exclude: /node_modules/,
       },
       {
         test: /\.(s[ac]|c)ss$/i,
