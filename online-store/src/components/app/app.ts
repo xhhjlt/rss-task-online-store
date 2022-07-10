@@ -11,6 +11,7 @@ class App implements IApp {
     }
     start() {
         console.log("Start App");
+        
     }
 }
 

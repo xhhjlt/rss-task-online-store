@@ -1,4 +1,38 @@
-body {
+header {
+    padding: 10px 30px;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    background-color: #17181c;
+    color: white;
+
+    .logo {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+main {
+    height: 50vh;
     background-color: beige;
-    color: chocolate;
+}
+
+footer {
+    padding: 10px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: #17181c;
+
+    .rss-logo {
+        height: 1rem;
+    }
+
+    a {
+        color: #999;
+    }
+
+    a:hover {
+        color: #bbb;
+    }
 }
