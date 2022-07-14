@@ -1,9 +1,7 @@
-import Controller from "../controller/controller";
-import View from "../view/view";
+import IController from "../controller/IController";
 
 interface IApp {
-    controller: Controller;
-    view: View;
+    controller: IController;
     start: () => void;
 }
 
