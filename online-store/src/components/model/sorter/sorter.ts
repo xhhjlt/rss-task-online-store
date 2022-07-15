@@ -10,7 +10,17 @@ class Sorter implements ISorter<spaceshipSortOptions, ISpaceshipData> {
     }
 
     useOn(ships: Array<ISpaceshipData>): Array<ISpaceshipData> {
-        return null as unknown as Array<ISpaceshipData>;
+        let result: Array<ISpaceshipData> = [];
+        switch (this.currentSort) {
+            case spaceshipSortOptions.nameBackward:
+                
+                break;
+        
+            default:
+                result = ships;
+                break;
+        }
+        return result;
     }
 }
 
