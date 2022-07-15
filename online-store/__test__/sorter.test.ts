@@ -1,4 +1,3 @@
-import ISpaceshipData from "../src/components/model/data/ISpaceshipData";
 import spaceshipSortOptions from "../src/components/model/data/spaceshipSortOptions";
 import Sorter from "../src/components/model/sorter/sorter"
 
