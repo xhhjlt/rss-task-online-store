@@ -21,11 +21,11 @@ class Loader implements ILoader<ISpaceshipData> {
         }
     }
 
-    loadData: () => Array<ISpaceshipData> = () => {
+    loadData(): Array<ISpaceshipData> {
         return this.validate(this.ships);
     }
 
-    private validate: (ships: Array<ISpaceshipData>) => Array<ISpaceshipData> = (ships) => {
+    private validate(ships: Array<ISpaceshipData>): Array<ISpaceshipData> {
         ships.forEach(ship => {
             switch (ship.type.trim().toLowerCase()) {
                 case "орбитальный":
