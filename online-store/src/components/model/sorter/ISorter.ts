@@ -1,8 +1,6 @@
-import { EnumType } from "typescript";
-
-interface ISorter<T> {
-    currentSort: EnumType;
-    useOn: (data: Array<T>) => Array<T>;
+interface ISorter<SortOptions, ProductType> {
+    currentSort: SortOptions;
+    useOn: (products: Array<ProductType>) => Array<ProductType>;
 }
 
 export default ISorter;
