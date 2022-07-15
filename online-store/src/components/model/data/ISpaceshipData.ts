@@ -1,13 +1,17 @@
 import IProductData from "./IProductData";
 
-export enum ShipClass {
-    orbital = "Orbital",
-    interplanetary = "Interplanetary",
-    interstellar = "Interstellar",
+export enum SpaceflightTypes {
+    orbital = "орбитальный",
+    interplanetary = "межпланетный",
+    interstellar = "межзвездный",
+    unknown = "неизвестно"
 }
 
-export enum EngineType {
-    rocket = "rocket",
+export enum LandingType {
+    soft = "мягкая",
+    crach = "жесткая",
+    non = "нет",
+    unknown = "неизвестно"
 }
 
 interface ISpaceshipData extends IProductData {
@@ -17,12 +21,11 @@ interface ISpaceshipData extends IProductData {
     description: string;
     quote: string;
     manufacturer: string;
-    year: number;
-    capacity: number;
+    launchYear: number;
     crew: number;
-    shipClass: ShipClass;
-    engine: EngineType;
-    popular: boolean;
+    type: SpaceflightTypes | string;
+    landing: LandingType | string;
+    inFlight: boolean;
 }
 
 export default ISpaceshipData;
