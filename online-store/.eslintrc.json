@@ -17,5 +17,6 @@
     ],
     "ignorePatterns": ["/*.js", "/dist"],
     "rules": {
-    }
+        "@typescript-eslint/no-var-requires": "0"
+      }
 }

@@ -4,8 +4,8 @@
   "main": "./src/index.ts",
   "scripts": {
     "start": "webpack serve --open",
-      "build": "webpack",
-      "build-prod": "webpack --mode=production",
+    "build": "webpack",
+    "build-prod": "webpack --mode=production",
     "lint": "eslint . --ext .ts",
     "test": "npx jest"
   },
@@ -14,6 +14,7 @@
   "license": "ISC",
   "description": "",
   "devDependencies": {
+    "@types/jest": "^28.1.5",
     "@typescript-eslint/eslint-plugin": "^5.30.5",
     "@typescript-eslint/parser": "^5.30.5",
     "copy-webpack-plugin": "^11.0.0",
