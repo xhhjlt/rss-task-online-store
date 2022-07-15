@@ -9,7 +9,7 @@ export enum SpaceflightTypes {
 
 export enum LandingType {
     soft = "мягкая",
-    crach = "жесткая",
+    crash = "жесткая",
     non = "нет",
     unknown = "неизвестно"
 }
