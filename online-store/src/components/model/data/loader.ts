@@ -49,7 +49,7 @@ class Loader implements ILoader<ISpaceshipData> {
                     ship.landing = LandingType.crash;
                     break;
                 case "нет":
-                    ship.landing = LandingType.non;
+                    ship.landing = LandingType.none;
                     break;
                 default:
                     ship.landing = LandingType.unknown;
