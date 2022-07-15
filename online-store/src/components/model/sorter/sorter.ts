@@ -36,31 +36,31 @@ class Sorter implements ISorter<spaceshipSortOptions, ISpaceshipData> {
         return ships;
     }
 
-    byName(a: ISpaceshipData, b: ISpaceshipData) {
+    private byName(a: ISpaceshipData, b: ISpaceshipData) {
         if (a.name > b.name) return 1;
         if (a.name < b.name) return -1;
         return 0;
     }
 
-    byNameBack(a: ISpaceshipData, b: ISpaceshipData) {
+    private byNameBack(a: ISpaceshipData, b: ISpaceshipData) {
         if (a.name > b.name) return -1;
         if (a.name < b.name) return 1;
         return 0;
     }
 
-    byYear(a: ISpaceshipData, b: ISpaceshipData) {
+    private byYear(a: ISpaceshipData, b: ISpaceshipData) {
         return a.launchYear - b.launchYear;
     }
 
-    byYearBack(a: ISpaceshipData, b: ISpaceshipData) {
+    private byYearBack(a: ISpaceshipData, b: ISpaceshipData) {
         return b.launchYear - a.launchYear;
     }
 
-    byCrew(a: ISpaceshipData, b: ISpaceshipData) {
+    private byCrew(a: ISpaceshipData, b: ISpaceshipData) {
         return a.crew - b.crew;
     }
 
-    byCrewBack(a: ISpaceshipData, b: ISpaceshipData) {
+    private byCrewBack(a: ISpaceshipData, b: ISpaceshipData) {
         return b.crew - a.crew;
     }
 }
