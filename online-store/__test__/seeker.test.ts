@@ -1,19 +1,17 @@
 import Seeker from "../src/components/model/seeker/seeker"
 
 const ships = require("./mocks/correct.json").spacecrafts;
+const seeker = new Seeker();
 
 test('Should return empty array if nothing to find', () => {
-    let seeker = new Seeker();
     expect(seeker.search([], "pepelac")).toEqual([]);
 })
 
 test('Should return empty array if do not find anything', () => {
-    let seeker = new Seeker();
     expect(seeker.search(ships, "pepelac")).toEqual([]);
 })
 
 test('Should finds spacecraft by substring in name', () => {
-    let seeker = new Seeker();
     expect(seeker.search(ships, "ar")).toEqual([
     {
         "id": 8,
