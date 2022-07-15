@@ -1,7 +1,7 @@
 import spaceshipSortOptions from "../src/components/model/data/spaceshipSortOptions";
 import Sorter from "../src/components/model/sorter/sorter"
 
-let ships = require("./mocks/sorter/correct.json").spacecrafts;
+let ships = require("./mocks/correct.json").spacecrafts;
 const sorter = new Sorter();
 
 test('return empty array if nothing to sort', () => {
