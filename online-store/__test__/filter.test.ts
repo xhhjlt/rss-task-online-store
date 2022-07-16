@@ -23,7 +23,7 @@ test('Should return array with elements matches manufacturer ЕС', () => {
         "image": "Huygens.jpg",
         "description": "«Гюйгенс» успешно вошёл в атмосферу Титана и совершил посадку на его поверхность, первая (и на 2022 год единственная) в истории мягкая посадка, совершённая во Внешней Солнечной системе.",
         "quote": "Планировалось передать 700 фотографий, но из-за сбоя в компьютерной программе (предположительно, по причине ошибок при её разработке) половина изображений была утеряна. ",
-        "manufacturer": "EC",
+        "manufacturer": "ЕС",
         "launchYear": 1997,
         "crew": 0,
         "type": "межпланетный",
@@ -52,17 +52,18 @@ test('Should return array with elements matches crew from 2 to 3', () => {
 test('Should return array with elements matches landing hard and none', () => {
     const landing = new Set<LandingType>([LandingType.crash, LandingType.none]);
     filter.currentFilters = {landing};
-    expect(filter.useOn(ships)).toEqual([{
-        "id": 9,
-        "name": "DART",
-        "image": "DART.png",
-        "description": "Double Asteroid Redirection Test — испытания перенаправления двойного астероида) — первый в истории проект по изменению траектории астероидов и их перенаправлению.",
-        "quote": "DART намеренно врежется во второй астероид системы Дидим на скорости примерно 6,6 км/с",
+    expect(filter.useOn(ships)).toEqual([
+    {
+        "id": 3,
+        "name": "Вояджер-1",
+        "image": "Voyager.jpg",
+        "description": "«Вояджер-1» является самым быстрым из покидающих Солнечную систему космических зондов, а также наиболее удалённым от Земли объектом из созданных человеком.",
+        "quote": "Мы направляем в космос это послание.",
         "manufacturer": "США",
-        "launchYear": 2021,
+        "launchYear": 1977,
         "crew": 0,
-        "type": "межпланетный",
-        "landing": "жесткая",
+        "type": "межзвездный",
+        "landing": "нет",
         "inFlight": true
     },
     {
@@ -79,16 +80,20 @@ test('Should return array with elements matches landing hard and none', () => {
         "inFlight": false
     },
     {
-        "id": 3,
-        "name": "Вояджер-1",
-        "image": "Voyager.jpg",
-        "description": "«Вояджер-1» является самым быстрым из покидающих Солнечную систему космических зондов, а также наиболее удалённым от Земли объектом из созданных человеком.",
-        "quote": "Мы направляем в космос это послание.",
+        "id": 9,
+        "name": "DART",
+        "image": "DART.png",
+        "description": "Double Asteroid Redirection Test — испытания перенаправления двойного астероида) — первый в истории проект по изменению траектории астероидов и их перенаправлению.",
+        "quote": "DART намеренно врежется во второй астероид системы Дидим на скорости примерно 6,6 км/с",
         "manufacturer": "США",
-        "launchYear": 1977,
+        "launchYear": 2021,
         "crew": 0,
-        "type": "межзвездный",
-        "landing": "нет",
+        "type": "межпланетный",
+        "landing": "жесткая",
         "inFlight": true
     },])
 })
+
+//test('Should return array with elements matches manufacturer ЕС', () => {
+  //  const manufacturer = new Set<string>(["ЕС"]);
+    //filter.currentFilters = {manufacturer};})
