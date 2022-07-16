@@ -1,5 +1,5 @@
 interface ILoader<T> {
-    loadData: () => Array<T>;
+    getData: () => Array<T>;
 }
 
 export default ILoader;

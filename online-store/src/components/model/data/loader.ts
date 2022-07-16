@@ -14,15 +14,15 @@ class Loader implements ILoader<ISpaceshipData> {
             return;
         }
         if (data?.spacecrafts && Array.isArray(data?.spacecrafts)) {
-            this.ships = data.spacecrafts;
+            this.ships = this.validate(data.spacecrafts);
         } else {
             console.error("Error: Wrong file format");
             this.ships = [];
         }
     }
 
-    loadData(): Array<ISpaceshipData> {
-        return this.validate(this.ships);
+    getData(): Array<ISpaceshipData> {
+        return this.ships;
     }
 
     private validate(ships: Array<ISpaceshipData>): Array<ISpaceshipData> {
