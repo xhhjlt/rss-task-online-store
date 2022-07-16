@@ -23,8 +23,8 @@ interface ISpaceshipData extends IProductData {
     manufacturer: string;
     launchYear: number;
     crew: number;
-    type: SpaceflightTypes | string;
-    landing: LandingType | string;
+    type: SpaceflightTypes;
+    landing: LandingType;
     inFlight: boolean;
 }
 

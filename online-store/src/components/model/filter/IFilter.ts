@@ -1,8 +1,6 @@
-import IFilterKeys from "./IFilterKeys";
-
-interface IFilter<T> {
-    currentFilters: IFilterKeys<T>;
-    useOn: (data: Array<T>) => Array<T>;
+interface IFilter<Filters, ProductType> {
+    currentFilters: Filters;
+    useOn: (products: Array<ProductType>) => Array<ProductType>;
 }
 
 export default IFilter;
