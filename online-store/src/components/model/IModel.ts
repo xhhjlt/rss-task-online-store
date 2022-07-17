@@ -1,14 +1,14 @@
 import IFilter from "./filter/IFilter";
 import ISeeker from "./seeker/ISeeker";
 import ISorter from "./sorter/ISorter";
-import IStorage from "./storage/IStorage";
+import IDataStorage from "./storage/IStorage";
 
-interface IModel<T> {
-    storage: IStorage<T>;
-    filter: IFilter<T>;
-    sorter: ISorter<T>;
-    seeker: ISeeker<T>;
-    getData: () => void;
+interface IModel<Filters, SortOptions, ProductType> {
+    storage: IDataStorage<ProductType>;
+    filter: IFilter<Filters, ProductType>;
+    sorter: ISorter<SortOptions, ProductType>;
+    seeker: ISeeker<ProductType>;
+    getData: () => Array<ProductType>;
     filterProducts: () => void;
     sortProducts: () => void;
     searchProducts: (keyword: string) => void;

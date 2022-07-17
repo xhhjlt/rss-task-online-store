@@ -3,7 +3,7 @@ import ISpaceshipData from "../data/ISpaceshipData";
 import Loader from "../data/loader";
 import IStorage from "./IStorage";
 
-class Storage implements IStorage<ISpaceshipData> {
+class DataStorage implements IStorage<ISpaceshipData> {
     all: Array<ISpaceshipData>;
     current: Array<ISpaceshipData>;
     cart: Array<number>;
@@ -21,4 +21,4 @@ class Storage implements IStorage<ISpaceshipData> {
     }
 }
 
-export default Storage;
+export default DataStorage;
