@@ -1,20 +1,26 @@
-.filters-conteiner {
+.products-conteiner {
     padding: 20px;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     gap: 10px;
 
-    .filters {
+    .card {
         background-color: #17181cc4;
         padding: 10px;
-        flex-grow: 1;
+        max-width: 300px;
         border: 1px solid white;
         border-radius: 10px;
         display: flex;
-        gap: 20px;
+        gap: 5px;
         flex-direction: column;
         h4 {
             margin: 0px;
+            text-align: center;
+        }
+        p {
+            margin: 0px;
+            text-align: center;
         }
     }
 }
