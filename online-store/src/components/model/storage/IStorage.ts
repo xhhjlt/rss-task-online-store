@@ -1,10 +1,10 @@
 import ILoader from "../data/ILoader";
 
-interface IStorage<T> {
-    all: Array<T>;
-    current: Array<T>;
-    cart: Array<T>;
-    loader: ILoader<T>;
+interface IStorage<ProductType> {
+    all: Array<ProductType>;
+    current: Array<ProductType>;
+    cart: Array<number>;
+    loader: ILoader<ProductType>;
 }
 
 export default IStorage;
