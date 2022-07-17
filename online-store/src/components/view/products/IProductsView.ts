@@ -1,5 +1,6 @@
-interface IProductsView {
-    view: () => void;
+
+interface IProductsView<ProductType> {
+    view: (products: Array<ProductType>) => void;
 }
 
 export default IProductsView;
