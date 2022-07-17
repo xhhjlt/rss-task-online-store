@@ -4,10 +4,11 @@ import ISpaceshipData, { LandingType, SpaceflightTypes } from "./ISpaceshipData"
 class Loader implements ILoader<ISpaceshipData> {
     ships: Array<ISpaceshipData>;
 
-    constructor(localUrl: string) {
+    constructor(localUrl?: string) {
         let data: { spacecrafts: Array<ISpaceshipData> };
+        const source = localUrl ? localUrl : "./warehouse.json";
         try {
-            data = require(localUrl);
+            data = require(source);
         } catch (e) {
             console.error("Error: Don't have access to file or file not exist");
             this.ships = [];

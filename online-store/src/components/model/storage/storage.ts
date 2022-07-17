@@ -10,7 +10,7 @@ class DataStorage implements IStorage<ISpaceshipData> {
     loader: ILoader<ISpaceshipData>;
 
     constructor() {
-        this.loader = new Loader("../data/warehouse.json")
+        this.loader = new Loader();
         this.all = this.loader.getData();
         this.current = [];
         this.cart = [];
