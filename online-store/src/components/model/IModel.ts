@@ -9,9 +9,9 @@ interface IModel<Filters, SortOptions, ProductType> {
     sorter: ISorter<SortOptions, ProductType>;
     seeker: ISeeker<ProductType>;
     getData: () => Array<ProductType>;
-    filterProducts: () => void;
-    sortProducts: () => void;
-    searchProducts: (keyword: string) => void;
+    //filterProducts: () => void;
+    //sortProducts: () => void;
+    //searchProducts: (keyword: string) => void;
 }
 
 export default IModel;
