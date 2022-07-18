@@ -12,6 +12,10 @@
         }
     }
 
+    input[type=checkbox] {
+        display: none;
+    }
+
     .filters {
         background-color: #17181cc4;
         padding: 20px;
@@ -49,6 +53,32 @@
             border-color: rgb(235, 122, 57);
             cursor: pointer;
         }
+    }
+
+    label {
+        padding: 3px 10px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid white;
+        border-radius: 10px;
+        transition: all 0.3s ease-in;
+
+        &:hover {
+            background-color: #2a2c33e8;
+            border-color: rgb(235, 122, 57);
+            cursor: pointer;
+        }
+
+    }
+
+    input[type=checkbox]:checked + label {
+        background-color: #2a2c33e8;
+        border-color: rgb(235, 122, 57);
+    }
+
+    .filters_by-value {
+        align-items: center;
     }
 
     .noUi-target {
