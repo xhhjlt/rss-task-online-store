@@ -32,6 +32,12 @@ class Products implements IProductsView<ISpaceshipData> {
                 <p>Экипаж: ${ship.crew} | Тип: ${ship.type}</p>
                 <p>Посадка: ${ship.landing} | В полете: ${ship.inFlight ? 'Да' : 'нет'}</p>`
         card.append(features);
+        const cart = document.createElement("div");
+        cart.classList.add("card-buttons")
+        const cartIcon = document.createElement("img");
+        cartIcon.src = require("../../../img/cart.svg");
+        cart.append(cartIcon);
+        card.append(cart);
         return card;
     }
 }
