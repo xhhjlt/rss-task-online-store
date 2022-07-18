@@ -12,7 +12,7 @@ class Filter implements IFilter<ISpaceshipFilters, ISpaceshipData> {
     useOn(ships: Array<ISpaceshipData>): Array<ISpaceshipData> {
        return ships.filter((ship: ISpaceshipData): boolean => {
             if (this.currentFilters.manufacturer) {
-                if (!this.currentFilters.manufacturer.has(ship.manufacturer.trim().toUpperCase())
+                if (!this.currentFilters.manufacturer.has(ship.manufacturer)
                     && this.currentFilters.manufacturer.size > 0)
                 return false;
             }

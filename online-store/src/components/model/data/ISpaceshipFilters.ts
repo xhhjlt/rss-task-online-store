@@ -1,8 +1,8 @@
 import { Set } from "typescript";
-import { LandingType, SpaceflightTypes } from "./ISpaceshipData";
+import { Country, LandingType, SpaceflightTypes } from "./ISpaceshipData";
 
 interface ISpaceshipFilters {
-    manufacturer?: Set<string>;
+    manufacturer?: Set<Country>;
     type?: Set<SpaceflightTypes>;
     landing?: Set<LandingType>;
     launchYearMin?: number;

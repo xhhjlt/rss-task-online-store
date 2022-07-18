@@ -1,4 +1,4 @@
-import { LandingType } from "../src/components/model/data/ISpaceshipData";
+import { Country, LandingType } from "../src/components/model/data/ISpaceshipData";
 import Filter from "../src/components/model/filter/filter"
 
 const ships = require("./mocks/correct.json").spacecrafts;
@@ -15,7 +15,7 @@ test('Should return empty array if no elements matches filters', () => {
 })
 
 test('Should return array with elements matches manufacturer ЕС', () => {
-    const manufacturer = new Set<string>(["ЕС"]);
+    const manufacturer = new Set<Country>([Country.eu]);
     filter.currentFilters = {manufacturer};
     expect(filter.useOn(ships)).toEqual([{
         "id": 10,

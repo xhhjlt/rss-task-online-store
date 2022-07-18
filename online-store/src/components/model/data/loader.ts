@@ -1,32 +1,43 @@
 import ILoader from "./ILoader";
-import ISpaceshipData, { LandingType, SpaceflightTypes } from "./ISpaceshipData";
+import ISpaceshipData, { Country, LandingType, SpaceflightTypes } from "./ISpaceshipData";
 
 class Loader implements ILoader<ISpaceshipData> {
-    ships: Array<ISpaceshipData>;
 
-    constructor() {
+    getData(): Array<ISpaceshipData> {
         let data: { spacecrafts: Array<ISpaceshipData> };
         try {
             data = require("./warehouse.json");
         } catch (e) {
             console.error("Error: Don't have access to file or file not exist");
-            this.ships = [];
-            return;
+            return [];
         }
         if (data?.spacecrafts && Array.isArray(data?.spacecrafts)) {
-            this.ships = this.validate(data.spacecrafts);
+            return this.validate(data.spacecrafts);
         } else {
             console.error("Error: Wrong file format");
-            this.ships = [];
+            return [];
         }
-    }
-
-    getData(): Array<ISpaceshipData> {
-        return this.ships;
     }
 
     private validate(ships: Array<ISpaceshipData>): Array<ISpaceshipData> {
         ships.forEach(ship => {
+            switch (ship.manufacturer.trim().toUpperCase()) {
+                case "СССР":
+                    ship.manufacturer = Country.ussr;
+                    break;
+                case "США":
+                    ship.manufacturer = Country.usa;
+                    break;
+                case "КНР":
+                    ship.manufacturer = Country.china;
+                    break;
+                case "ЕС":
+                    ship.manufacturer = Country.eu;
+                    break;
+                default:
+                    ship.type = SpaceflightTypes.unknown;
+                    break;
+            }
             switch (ship.type.trim().toLowerCase()) {
                 case "орбитальный":
                     ship.type = SpaceflightTypes.orbital;

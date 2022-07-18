@@ -14,13 +14,21 @@ export enum LandingType {
     unknown = "неизвестно"
 }
 
+export enum Country {
+    ussr = "СССР",
+    usa = "США",
+    china = "КНР",
+    eu = "ЕС",
+    unknown = "НЕИЗВЕСТНО"
+}
+
 interface ISpaceshipData extends IProductData {
     id: number;
     name: string;
     image: string;
     description: string;
     quote: string;
-    manufacturer: string;
+    manufacturer: Country;
     launchYear: number;
     crew: number;
     type: SpaceflightTypes;
