@@ -41,6 +41,10 @@ class Filter implements IFilter<ISpaceshipFilters, ISpaceshipData> {
                 if (ship.crew > currentFilters.crewMax)
                 return false;
             }
+            if (currentFilters.search) {
+                if (!ship.name.toUpperCase().includes(currentFilters.search.toUpperCase()))
+                return false;
+            }
             return true;
         })
     }

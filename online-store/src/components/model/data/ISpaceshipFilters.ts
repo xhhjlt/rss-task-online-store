@@ -10,6 +10,7 @@ interface ISpaceshipFilters {
     crewMin?: number;
     crewMax?: number;
     inFlight?: boolean;
+    search?: string;
 }
 
 export default ISpaceshipFilters;

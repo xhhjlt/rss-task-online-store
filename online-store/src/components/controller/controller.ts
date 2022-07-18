@@ -19,6 +19,12 @@ class Controller implements IController {
     inputHandler(): void {
         this.model.storage.setFilters(this.view.filters.getFilters());
         this.view.products.view(this.model.getData(), this.model.storage.cart)
+        if (!this.view.products.conteiner.firstChild) {
+            const message = document.createElement("div");
+            message.classList.add("card");
+            message.innerHTML = "<h4>Извините, совпадений не обнаружено</h4>";
+            this.view.products.conteiner.append(message);
+        }
     }
 
     clickHandler(event: Event): void {

@@ -55,6 +55,8 @@ class Filters implements IFiltersView {
         if (this.crash.checked) result.landing.add(LandingType.crash);
         if (this.none.checked) result.landing.add(LandingType.none);
         result.inFlight = this.flight?.checked;
+        result.search = this.search.value;
+
         return result;
     }
 
