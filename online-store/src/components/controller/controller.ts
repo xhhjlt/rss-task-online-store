@@ -10,6 +10,8 @@ class Controller implements IController {
         this.model = new Model();
         this.view = new View();
         this.view.filters.conteiner.addEventListener("input", () => this.inputHandler());
+        this.view.filters.crewSlider.on("change", () => this.inputHandler());
+        this.view.filters.yearSlider.on("change", () => this.inputHandler());
         this.view.filters.drawFilters(this.model.storage.getFilters());
         this.view.products.conteiner.addEventListener("click", (event) => this.clickHandler(event))
         this.view.products.view(this.model.getData(), this.model.storage.cart)

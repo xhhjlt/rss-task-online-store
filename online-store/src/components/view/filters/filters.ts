@@ -2,6 +2,8 @@ import { Country, LandingType, SpaceflightTypes } from "../../model/data/ISpaces
 import ISpaceshipFilters from "../../model/data/ISpaceshipFilters";
 import spaceshipSortOptions from "../../model/data/spaceshipSortOptions";
 import IFiltersView from "./IFiltersView";
+import * as noUiSlider from 'nouislider';
+import 'nouislider/dist/nouislider.css';
 
 class Filters implements IFiltersView {
     conteiner: HTMLElement;
@@ -16,10 +18,10 @@ class Filters implements IFiltersView {
     crash: HTMLInputElement;
     none: HTMLInputElement;
     flight: HTMLInputElement;
-    crew: HTMLInputElement;
-    year: HTMLInputElement;
     search: HTMLInputElement;
     sort: HTMLInputElement;
+    crewSlider: noUiSlider.API;
+    yearSlider: noUiSlider.API;
 
     constructor() {
         this.conteiner = document.querySelector(".filters-conteiner") as HTMLElement;
@@ -33,9 +35,29 @@ class Filters implements IFiltersView {
         this.soft = document.querySelector("#soft") as HTMLInputElement;
         this.crash = document.querySelector("#crash") as HTMLInputElement;
         this.none = document.querySelector("#none") as HTMLInputElement;
+        const year = document.getElementById("year") as HTMLInputElement;
+        const crew = document.getElementById("crew") as HTMLInputElement;
+        this.yearSlider = noUiSlider.create(year, {
+            start: [1950, 2022],
+            connect: true,
+            range: {
+                'min': 1950,
+                'max': 2022
+            },
+            tooltips: true,
+            step: 1,
+        });
+        this.crewSlider = noUiSlider.create(crew, {
+            start: [0, 3],
+            connect: true,
+            range: {
+                'min': 0,
+                'max': 3
+            },
+            tooltips: true,
+            step: 1,
+        });
         this.flight = document.querySelector("#flight") as HTMLInputElement;
-        this.crew = document.querySelector("#crew") as HTMLInputElement;
-        this.year = document.querySelector("#year") as HTMLInputElement;
         this.search = document.querySelector("#search") as HTMLInputElement;
         this.sort = document.querySelector("#sort") as HTMLInputElement;
     }
@@ -57,6 +79,10 @@ class Filters implements IFiltersView {
         if (this.none.checked) result.landing.add(LandingType.none);
         result.inFlight = this.flight?.checked;
         result.search = this.search.value;
+        const crewRange = this.crewSlider.get(true) as Array<number>;
+        [result.crewMin, result.crewMax] = crewRange;
+        const yearRange = this.yearSlider.get(true) as Array<number>;
+        [result.launchYearMin, result.launchYearMax] = yearRange;
         switch (this.sort.value) {
             case "1":
                 result.sort = spaceshipSortOptions.nameForward;
@@ -96,8 +122,9 @@ class Filters implements IFiltersView {
         this.crash.checked = Boolean(filters.landing?.has(LandingType.crash));
         this.none.checked = Boolean(filters.landing?.has(LandingType.none));
         this.flight.checked = Boolean(filters.inFlight);
-
-        
+        this.sort.value = filters.sort ? filters.sort.toString() : "1";
+        this.crewSlider.set([(filters.crewMin ? filters.crewMin : 0) , (filters.crewMax ? filters.crewMax : 3)], false);
+        this.yearSlider.set([(filters.launchYearMin ? filters.launchYearMin : 1950) , (filters.launchYearMax ? filters.launchYearMax : 2022)], false);
     }
 }
 
