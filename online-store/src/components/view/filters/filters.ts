@@ -70,6 +70,8 @@ class Filters implements IFiltersView {
         this.crash.checked = Boolean(filters.landing?.has(LandingType.crash));
         this.none.checked = Boolean(filters.landing?.has(LandingType.none));
         this.flight.checked = Boolean(filters.inFlight);
+
+        
     }
 }
 

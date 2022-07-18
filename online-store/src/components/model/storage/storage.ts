@@ -7,13 +7,13 @@ import IStorage from "./IStorage";
 class DataStorage implements IStorage<ISpaceshipData, ISpaceshipFilters> {
     all: Array<ISpaceshipData>;
     currentfilters: ISpaceshipFilters;
-    cart: Set<number>;
+    cart: Set<string>;
     loader: ILoader<ISpaceshipData>;
 
     constructor() {
         this.loader = new Loader();
         this.all = this.loader.getData();
-        this.cart = new Set<number>;
+        this.cart = new Set<string>;
         this.currentfilters = {};
     }
 
