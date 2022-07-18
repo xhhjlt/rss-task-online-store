@@ -20,8 +20,8 @@
     <main>
         <section class="filters-conteiner">
             <div class="filters filters_by-value">
-                <h4>Фильтры по значению</h4>
-                <div class="manufacturer">Страна:
+                <h4>Страна:</h4>
+                <div class="manufacturer">
                     <input type="checkbox" name="ussr" id="ussr">
                     <label for="ussr">СССР ☭</label>
                     <input type="checkbox" name="usa" id="usa">
@@ -31,7 +31,8 @@
                     <input type="checkbox" name="eu" id="eu">
                     <label for="eu">ЕС 🇪🇺</label>
                 </div>
-                <div class="type">Тип:
+                <h4>Тип:</h4>
+                <div class="type">
                     <input type="checkbox" name="orbital" id="orbital">
                     <label for="orbital">Орбитальный</label>
                     <input type="checkbox" name="interplanetary" id="interplanetary">
@@ -39,7 +40,8 @@
                     <input type="checkbox" name="interstellar" id="interstellar">
                     <label for="interstellar">Межзвездный</label>
                 </div>
-                <div class="landing">Посадка:
+                <h4>Посадка:</h4>
+                <div class="landing">
                     <input type="checkbox" name="soft" id="soft">
                     <label for="soft">Мягкая</label>
                     <input type="checkbox" name="crash" id="crash">
@@ -48,15 +50,16 @@
                     <label for="none">Нет</label>
                 </div>
                 <div class="in-flight">
-                    <label for="flight">В полете</label>
-                    <input type="checkbox" name="flight" id="flight">
+                    <h4><label for="flight">В полете: </label>
+                    <input type="checkbox" name="flight" id="flight"></h4>
                 </div>
             </div>
             <div class="filters filters_by-range">
                 <h4>Год запуска: <span class="year-label">1950 - 2022</span></h4>
-                    <div id="year"></div>
+                <div id="year"></div>
                 <h4>Экипаж: <span class="crew-label">0 - 3</span></h4>
-                    <div id="crew"></div>
+                <div id="crew"></div>
+                <div class="button reset-filters">Сбросить фильтры</div>
             </div>
             <div class="filters filters_search">
                 <h4>Поиск</h4>
@@ -70,6 +73,7 @@
                     <option value="5">По экипажу, по возрастанию</option>
                     <option value="6">По экипажу, по убыванию</option>
                 </select>
+                <div class="button reset-all">Сбросить настройки</div>
             </div>
         </section>
         <section class="products-conteiner">

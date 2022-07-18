@@ -5,6 +5,13 @@
     flex-wrap: wrap;
     gap: 10px;
 
+    input,
+    label {
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
     .filters {
         background-color: #17181cc4;
         padding: 20px;
@@ -23,6 +30,25 @@
     .filters_by-range {
         padding: 20px 40px;
         gap: 25px;
+    }
+
+    .button {
+        margin-top: auto;
+        width: 200px;
+        height: 30px;
+        align-self: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid white;
+        border-radius: 10px;
+        transition: all 0.3s ease-in;
+
+        &:hover {
+            background-color: #2a2c33e8;
+            border-color: rgb(235, 122, 57);
+            cursor: pointer;
+        }
     }
 
     .noUi-target {

@@ -24,6 +24,8 @@ class Filters implements IFiltersView {
     yearSlider: noUiSlider.API;
     crewLabel: HTMLElement;
     yearLabel: HTMLElement;
+    resetFilters: HTMLElement;
+    resetAll: HTMLElement;
 
     constructor() {
         this.conteiner = document.querySelector(".filters-conteiner") as HTMLElement;
@@ -62,6 +64,8 @@ class Filters implements IFiltersView {
         this.flight = document.querySelector("#flight") as HTMLInputElement;
         this.search = document.querySelector("#search") as HTMLInputElement;
         this.sort = document.querySelector("#sort") as HTMLInputElement;
+        this.resetFilters = document.querySelector(".reset-filters") as HTMLElement;
+        this.resetAll = document.querySelector(".reset-all") as HTMLElement; 
     }
 
     getFilters(): ISpaceshipFilters {

@@ -22,8 +22,21 @@ class Controller implements IController {
         });
         this.view.filters.yearSlider.on("update", () => this.inputHandler());
         this.view.filters.drawFilters(this.model.storage.getFilters());
-        this.view.products.conteiner.addEventListener("click", (event) => this.clickHandler(event))
-        this.view.products.view(this.model.getData(), this.model.storage.cart)
+        this.view.filters.resetFilters.addEventListener("click", () => {
+            const filters = this.model.storage.getFilters();
+            this.model.storage.setFilters({sort: filters.sort, search: filters.search});
+            this.view.filters.drawFilters(this.model.storage.getFilters());
+        })
+        this.view.filters.resetAll.addEventListener("click", () => {
+            this.model.storage.setFilters({});
+            this.model.storage.cart.clear();
+            const cartCounter: HTMLElement = document.querySelector(".cart-count") as HTMLElement;
+            cartCounter.innerHTML = '0';
+            this.view.filters.search.value = '';
+            this.view.filters.drawFilters(this.model.storage.getFilters());
+        })
+        this.view.products.conteiner.addEventListener("click", (event) => this.cardClickHandler(event));
+        this.view.products.view(this.model.getData(), this.model.storage.cart);
 
     }
 
@@ -38,7 +51,7 @@ class Controller implements IController {
         }
     }
 
-    clickHandler(event: Event): void {
+    cardClickHandler(event: Event): void {
         if (event.target instanceof HTMLElement) {
             const card: HTMLElement = event.target.closest(".card") as HTMLElement;
             if (this.model.storage.getAmountInCart() >= 20) {
