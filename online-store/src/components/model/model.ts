@@ -12,7 +12,7 @@ import IStorage from "./storage/IStorage";
 import DataStorage from "./storage/storage";
 
 class Model implements IModel<ISpaceshipFilters, spaceshipSortOptions, ISpaceshipData>{
-    storage: IStorage<ISpaceshipData>;
+    storage: IStorage<ISpaceshipData,ISpaceshipFilters>;
     filter: IFilter<ISpaceshipFilters, ISpaceshipData>;
     sorter: ISorter<spaceshipSortOptions, ISpaceshipData>;
     seeker: ISeeker<ISpaceshipData>;
@@ -25,12 +25,10 @@ class Model implements IModel<ISpaceshipFilters, spaceshipSortOptions, ISpaceshi
     }
 
     getData(): Array<ISpaceshipData> {
-        return this.storage.current
+        let result = this.storage.all;
+        result = this.filter.use(result, this.storage.getFilters());
+        return result;
     }
-
-    //filterProducts: () => void;
-    //sortProducts: () => void;
-    //searchProducts: (keyword: string) => void;
 
 }
 

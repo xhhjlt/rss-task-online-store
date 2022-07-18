@@ -1,6 +1,4 @@
 import Controller from "../controller/controller";
-import Model from "../model/model";
-import View from "../view/view";
 import IApp from "./IApp";
 
 class App implements IApp {

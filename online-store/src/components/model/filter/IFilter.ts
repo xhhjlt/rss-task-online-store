@@ -1,6 +1,5 @@
 interface IFilter<Filters, ProductType> {
-    currentFilters: Filters;
-    useOn: (products: Array<ProductType>) => Array<ProductType>;
+    use: (products: Array<ProductType>, filters: Filters) => Array<ProductType>;
 }
 
 export default IFilter;

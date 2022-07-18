@@ -12,13 +12,16 @@
     <header>
         <img src="./img/transparent-logo-rocket-.png" alt="logo" class="logo">
         <h1>Spacecrafts</h1>
-        <img src="./img/cart.svg" alt="cart" class="cart">
+        <div class="cart">
+            <img src="./img/cart.svg" alt="cart">
+            <span class="cart-count"><span class="value">0</span></span>
+        </div>
     </header>
     <main>
         <section class="filters-conteiner">
             <div class="filters filters_by-value">
                 <h4>Фильтры по значению</h4>
-                <div class="maufacturer">Страна: 
+                <div class="manufacturer">Страна:
                     <input type="checkbox" name="ussr" id="ussr">
                     <label for="ussr">СССР ☭</label>
                     <input type="checkbox" name="usa" id="usa">
@@ -28,7 +31,7 @@
                     <input type="checkbox" name="eu" id="eu">
                     <label for="eu">ЕС 🇪🇺</label>
                 </div>
-                <div class="type">Тип: 
+                <div class="type">Тип:
                     <input type="checkbox" name="orbital" id="orbital">
                     <label for="orbital">Орбитальный</label>
                     <input type="checkbox" name="interplanetary" id="interplanetary">
@@ -36,7 +39,7 @@
                     <input type="checkbox" name="interstellar" id="interstellar">
                     <label for="interstellar">Межзвездный</label>
                 </div>
-                <div class="landing">Посадка: 
+                <div class="landing">Посадка:
                     <input type="checkbox" name="soft" id="soft">
                     <label for="soft">Мягкая</label>
                     <input type="checkbox" name="crash" id="crash">
@@ -52,17 +55,17 @@
             <div class="filters filters_by-range">
                 <h4>Фильтры по диапазону</h4>
                 <div class="crew">Экипаж
-                    <input type="range" name="" id="">
+                    <input type="range" name="crew" id="crew">
                 </div>
                 <div class="year">Год запуска
-                    <input type="range" name="" id="">
+                    <input type="range" name="year" id="year">
                 </div>
             </div>
             <div class="filters filters_search">
                 <h4>Поиск</h4>
-                <input type="search" name="" id="">
+                <input type="search" name="search" id="search">
                 <h4>Сортировка</h4>
-                <select name="" id=""></select>
+                <select name="sort" id="sort"></select>
             </div>
         </section>
         <section class="products-conteiner">

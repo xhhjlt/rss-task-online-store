@@ -1,10 +1,13 @@
 import ILoader from "../data/ILoader";
 
-interface IDataStorage<ProductType> {
+interface IDataStorage<ProductType, FiltersType> {
     all: Array<ProductType>;
-    current: Array<ProductType>;
-    cart: Array<number>;
+    cart: Set<number>;
     loader: ILoader<ProductType>;
+
+    getFilters: () => FiltersType;
+
+    setFilters: (filters: FiltersType) => void;
 }
 
 export default IDataStorage;

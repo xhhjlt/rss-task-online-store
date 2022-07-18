@@ -1,9 +1,9 @@
 import IFiltersView from "./filters/IFiltersView";
 import IProductsView from "./products/IProductsView";
 
-interface IView {
+interface IView<ProductData> {
     filters: IFiltersView;
-    products: IProductsView;
+    products: IProductsView<ProductData>;
 }
 
 export default IView;
