@@ -5,7 +5,7 @@ enum spaceshipSortOptions {
     yearBackward = "По году запуска, по убыванию",
     crewForward = "По экипажу, по возрастанию",
     crewBackward = "По экипажу, по убыванию",
-    none = "Сортировка"
+    none = ""
 }
 
 export default spaceshipSortOptions;

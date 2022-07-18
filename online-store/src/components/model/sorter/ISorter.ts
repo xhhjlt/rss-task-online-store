@@ -1,6 +1,5 @@
-interface ISorter<SortOptions, ProductType> {
-    currentSort: SortOptions;
-    useOn: (products: Array<ProductType>) => Array<ProductType>;
+interface ISorter<FiltersOptions, ProductType> {
+    sort: (products: Array<ProductType>, filters: FiltersOptions) => Array<ProductType>;
 }
 
 export default ISorter;

@@ -1,5 +1,6 @@
 import { Set } from "typescript";
 import { Country, LandingType, SpaceflightTypes } from "./ISpaceshipData";
+import spaceshipSortOptions from "./spaceshipSortOptions";
 
 interface ISpaceshipFilters {
     manufacturer?: Set<Country>;
@@ -11,6 +12,7 @@ interface ISpaceshipFilters {
     crewMax?: number;
     inFlight?: boolean;
     search?: string;
+    sort?: spaceshipSortOptions;
 }
 
 export default ISpaceshipFilters;

@@ -1,5 +1,6 @@
 import { Country, LandingType, SpaceflightTypes } from "../../model/data/ISpaceshipData";
 import ISpaceshipFilters from "../../model/data/ISpaceshipFilters";
+import spaceshipSortOptions from "../../model/data/spaceshipSortOptions";
 import IFiltersView from "./IFiltersView";
 
 class Filters implements IFiltersView {
@@ -56,6 +57,29 @@ class Filters implements IFiltersView {
         if (this.none.checked) result.landing.add(LandingType.none);
         result.inFlight = this.flight?.checked;
         result.search = this.search.value;
+        switch (this.sort.value) {
+            case "1":
+                result.sort = spaceshipSortOptions.nameForward;
+                break;
+            case "2":
+                result.sort = spaceshipSortOptions.nameBackward;
+                break;
+            case "3":
+                result.sort = spaceshipSortOptions.yearForward;
+                break;
+            case "4":
+                result.sort = spaceshipSortOptions.yearBackward;
+                break;
+            case "5":
+                result.sort = spaceshipSortOptions.crewForward;
+                break;
+            case "6":
+                result.sort = spaceshipSortOptions.crewBackward;
+                break;
+            default:
+                result.sort = spaceshipSortOptions.nameForward;
+                break;
+        }
 
         return result;
     }
