@@ -22,6 +22,8 @@ class Filters implements IFiltersView {
     sort: HTMLInputElement;
     crewSlider: noUiSlider.API;
     yearSlider: noUiSlider.API;
+    crewLabel: HTMLElement;
+    yearLabel: HTMLElement;
 
     constructor() {
         this.conteiner = document.querySelector(".filters-conteiner") as HTMLElement;
@@ -37,6 +39,8 @@ class Filters implements IFiltersView {
         this.none = document.querySelector("#none") as HTMLInputElement;
         const year = document.getElementById("year") as HTMLInputElement;
         const crew = document.getElementById("crew") as HTMLInputElement;
+        this.crewLabel = document.querySelector(".crew-label") as HTMLElement;
+        this.yearLabel = document.querySelector(".year-label") as HTMLElement;
         this.yearSlider = noUiSlider.create(year, {
             start: [1950, 2022],
             connect: true,
@@ -44,7 +48,6 @@ class Filters implements IFiltersView {
                 'min': 1950,
                 'max': 2022
             },
-            tooltips: true,
             step: 1,
         });
         this.crewSlider = noUiSlider.create(crew, {
@@ -54,7 +57,6 @@ class Filters implements IFiltersView {
                 'min': 0,
                 'max': 3
             },
-            tooltips: true,
             step: 1,
         });
         this.flight = document.querySelector("#flight") as HTMLInputElement;
@@ -123,8 +125,8 @@ class Filters implements IFiltersView {
         this.none.checked = Boolean(filters.landing?.has(LandingType.none));
         this.flight.checked = Boolean(filters.inFlight);
         this.sort.value = filters.sort ? filters.sort.toString() : "1";
-        this.crewSlider.set([(filters.crewMin ? filters.crewMin : 0) , (filters.crewMax ? filters.crewMax : 3)], false);
-        this.yearSlider.set([(filters.launchYearMin ? filters.launchYearMin : 1950) , (filters.launchYearMax ? filters.launchYearMax : 2022)], false);
+        this.crewSlider.set([(filters.crewMin ? filters.crewMin : 0) , (filters.crewMax ? filters.crewMax : 3)]);
+        this.yearSlider.set([(filters.launchYearMin ? filters.launchYearMin : 1950) , (filters.launchYearMax ? filters.launchYearMax : 2022)]);
     }
 }
 

@@ -7,8 +7,9 @@
 
     .filters {
         background-color: #17181cc4;
-        padding: 10px;
+        padding: 20px;
         flex-grow: 1;
+        min-width: 200px;
         border: 1px solid white;
         border-radius: 10px;
         display: flex;
@@ -19,7 +20,19 @@
         }
     }
 
-    #crew {
-        border: 1px solid red;
+    .filters_by-range {
+        padding: 20px 40px;
+        gap: 25px;
+    }
+
+    .noUi-target {
+        background-color: #17181cc4;
+        height: 0.6rem;
+    }
+    .noUi-handle {
+        height: 22px;
+    }
+    .noUi-connect {
+        background-color: rgb(235, 122, 57);
     }
 }

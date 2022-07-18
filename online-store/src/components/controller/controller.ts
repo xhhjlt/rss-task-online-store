@@ -12,6 +12,15 @@ class Controller implements IController {
         this.view.filters.conteiner.addEventListener("input", () => this.inputHandler());
         this.view.filters.crewSlider.on("change", () => this.inputHandler());
         this.view.filters.yearSlider.on("change", () => this.inputHandler());
+        this.view.filters.crewSlider.on("update", () => {
+            const range: Array<number>  = this.view.filters.crewSlider.get(true) as Array<number>;
+            this.view.filters.crewLabel.innerHTML = `${range[0]} - ${range[1]}`;
+        });
+        this.view.filters.yearSlider.on("update", () => {
+            const range: Array<number>  = this.view.filters.yearSlider.get(true) as Array<number>;
+            this.view.filters.yearLabel.innerHTML = `${range[0]} - ${range[1]}`;
+        });
+        this.view.filters.yearSlider.on("update", () => this.inputHandler());
         this.view.filters.drawFilters(this.model.storage.getFilters());
         this.view.products.conteiner.addEventListener("click", (event) => this.clickHandler(event))
         this.view.products.view(this.model.getData(), this.model.storage.cart)
