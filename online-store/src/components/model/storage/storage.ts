@@ -48,7 +48,6 @@ class DataStorage implements IStorage<ISpaceshipData, ISpaceshipFilters> {
         filters.crewMax = Number(localStorage.getItem("crewMax")) || 3;
         filters.launchYearMin = Number(localStorage.getItem("launchYearMin")) || 1950;
         filters.launchYearMax = Number(localStorage.getItem("launchYearMax")) || 2022;
-        console.log(localStorage)
         filters.manufacturer = new Set<Country>;
         if (localStorage.getItem("СССР") === "true") filters.manufacturer.add(Country.ussr);
         if (localStorage.getItem("США") === "true") filters.manufacturer.add(Country.usa);
@@ -99,8 +98,6 @@ class DataStorage implements IStorage<ISpaceshipData, ISpaceshipFilters> {
         })
         filters.manufacturer?.forEach((item: Country) => {
             localStorage.setItem(item, "true");
-            console.log(item);
-            console.log(localStorage.getItem(item));
         });
         filters.landing?.forEach((item: LandingType) => {
             localStorage.setItem(item, "true");
