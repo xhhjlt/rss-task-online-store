@@ -5,6 +5,12 @@ interface IDataStorage<ProductType, FiltersType> {
     cart: Set<string>;
     loader: ILoader<ProductType>;
 
+    addToCart: (product: string) => void;
+
+    removeFromCart: (ship: string) => void;
+
+    cartClear: () => void; 
+
     getAmountInCart: () => number;
 
     getFilters: () => FiltersType;

@@ -129,6 +129,7 @@ class Filters implements IFiltersView {
         this.none.checked = Boolean(filters.landing?.has(LandingType.none));
         this.flight.checked = Boolean(filters.inFlight);
         this.sort.value = filters.sort ? filters.sort.toString() : "1";
+        this.search.value = filters.search || "";
         this.crewSlider.set([(filters.crewMin ? filters.crewMin : 0) , (filters.crewMax ? filters.crewMax : 3)]);
         this.yearSlider.set([(filters.launchYearMin ? filters.launchYearMin : 1950) , (filters.launchYearMax ? filters.launchYearMax : 2022)]);
     }

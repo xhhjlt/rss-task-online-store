@@ -9,6 +9,7 @@ class Controller implements IController {
     constructor () {
         this.model = new Model();
         this.view = new View();
+        this.view.filters.drawFilters(this.model.storage.getFilters());
         this.view.filters.conteiner.addEventListener("input", () => this.inputHandler());
         this.view.filters.crewSlider.on("change", () => this.inputHandler());
         this.view.filters.yearSlider.on("change", () => this.inputHandler());
@@ -21,7 +22,6 @@ class Controller implements IController {
             this.view.filters.yearLabel.innerHTML = `${range[0]} - ${range[1]}`;
         });
         this.view.filters.yearSlider.on("update", () => this.inputHandler());
-        this.view.filters.drawFilters(this.model.storage.getFilters());
         this.view.filters.resetFilters.addEventListener("click", () => {
             const filters = this.model.storage.getFilters();
             this.model.storage.setFilters({sort: filters.sort, search: filters.search});
@@ -29,7 +29,7 @@ class Controller implements IController {
         })
         this.view.filters.resetAll.addEventListener("click", () => {
             this.model.storage.setFilters({});
-            this.model.storage.cart.clear();
+            this.model.storage.cartClear();
             const cartCounter: HTMLElement = document.querySelector(".cart-count") as HTMLElement;
             cartCounter.innerHTML = '0';
             this.view.filters.search.value = '';
@@ -60,9 +60,9 @@ class Controller implements IController {
             }
             const cardID: string = card?.getAttribute("shipID") + "";
             if (card?.classList.toggle("in-cart")) {
-                this.model.storage.cart.add(cardID);
+                this.model.storage.addToCart(cardID);
             } else {
-                this.model.storage.cart.delete(cardID)
+                this.model.storage.removeFromCart(cardID)
             }
             const cartCounter: HTMLElement = document.querySelector(".cart-count") as HTMLElement;
             cartCounter.innerHTML =  this.model.storage.getAmountInCart().toString();
