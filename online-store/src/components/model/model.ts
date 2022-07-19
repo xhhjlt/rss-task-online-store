@@ -20,7 +20,7 @@ class Model implements IModel<ISpaceshipFilters, ISpaceshipData>{
     }
 
     getData(): Array<ISpaceshipData> {
-        let result = this.storage.all;
+        let result: Array<ISpaceshipData> = this.storage.all;
         result = this.filter.use(result, this.storage.getFilters());
         result = this.sorter.sort(result,this.storage.getFilters())
         return result;

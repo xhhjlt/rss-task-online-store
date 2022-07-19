@@ -1,3 +1,4 @@
+import ISpaceshipFilters from "../model/data/ISpaceshipFilters";
 import Model from "../model/model";
 import View from "../view/view";
 import IController from "./IController";
@@ -23,7 +24,7 @@ class Controller implements IController {
         });
         this.view.filters.yearSlider.on("update", () => this.inputHandler());
         this.view.filters.resetFilters.addEventListener("click", () => {
-            const filters = this.model.storage.getFilters();
+            const filters: ISpaceshipFilters = this.model.storage.getFilters();
             this.model.storage.setFilters({sort: filters.sort, search: filters.search});
             this.view.filters.drawFilters(this.model.storage.getFilters());
         })
@@ -35,7 +36,7 @@ class Controller implements IController {
             this.view.filters.search.value = '';
             this.view.filters.drawFilters(this.model.storage.getFilters());
         })
-        this.view.products.conteiner.addEventListener("click", (event) => this.cardClickHandler(event));
+        this.view.products.conteiner.addEventListener("click", (event: Event) => this.cardClickHandler(event));
         this.view.products.view(this.model.getData(), this.model.storage.cart);
 
     }
@@ -44,7 +45,7 @@ class Controller implements IController {
         this.model.storage.setFilters(this.view.filters.getFilters());
         this.view.products.view(this.model.getData(), this.model.storage.cart)
         if (!this.view.products.conteiner.firstChild) {
-            const message = document.createElement("div");
+            const message: HTMLElement = document.createElement("div");
             message.classList.add("card");
             message.innerHTML = "<h4>Извините, совпадений не обнаружено</h4>";
             this.view.products.conteiner.append(message);

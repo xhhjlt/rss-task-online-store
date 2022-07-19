@@ -39,8 +39,8 @@ class Filters implements IFiltersView {
         this.soft = document.querySelector("#soft") as HTMLInputElement;
         this.crash = document.querySelector("#crash") as HTMLInputElement;
         this.none = document.querySelector("#none") as HTMLInputElement;
-        const year = document.getElementById("year") as HTMLInputElement;
-        const crew = document.getElementById("crew") as HTMLInputElement;
+        const year: HTMLElement = document.getElementById("year") as HTMLElement;
+        const crew: HTMLElement = document.getElementById("crew") as HTMLElement;
         this.crewLabel = document.querySelector(".crew-label") as HTMLElement;
         this.yearLabel = document.querySelector(".year-label") as HTMLElement;
         this.yearSlider = noUiSlider.create(year, {
@@ -85,9 +85,9 @@ class Filters implements IFiltersView {
         if (this.none.checked) result.landing.add(LandingType.none);
         result.inFlight = this.flight?.checked;
         result.search = this.search.value;
-        const crewRange = this.crewSlider.get(true) as Array<number>;
+        const crewRange: Array<number> = this.crewSlider.get(true) as Array<number>;
         [result.crewMin, result.crewMax] = crewRange;
-        const yearRange = this.yearSlider.get(true) as Array<number>;
+        const yearRange: Array<number> = this.yearSlider.get(true) as Array<number>;
         [result.launchYearMin, result.launchYearMax] = yearRange;
         switch (this.sort.value) {
             case "1":
