@@ -1,7 +1,7 @@
 import { Country, LandingType } from "../src/components/model/data/ISpaceshipData";
 import Filter from "../src/components/model/filter/filter"
 
-const ships = require("./mocks/correct.json").spacecrafts;
+const ships = require("./stabs/correct.json").spacecrafts;
 const filter = new Filter();
 
 test('filter.use() should return full array on empty filters', () => {
