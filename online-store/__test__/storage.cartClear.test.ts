@@ -6,7 +6,7 @@ import DataStorage from "../src/components/model/storage/storage";
 
 const storage = new DataStorage();
 
-test(`storage.removeFromCart(str) should remove str from storage.cart set`, () => {
+test(`storage.cartClear() should remove all products from storage.cart set`, () => {
     storage.addToCart("1");
     storage.addToCart("2");
     storage.cartClear();
@@ -15,7 +15,7 @@ test(`storage.removeFromCart(str) should remove str from storage.cart set`, () =
     expect(storage.cart.size).toEqual(0);
 })
 
-test(`storage.removeFromCart(str) should remove "str" from localStorage`, () => {
+test(`storage.cartClear() should remove all products from localStorage`, () => {
     storage.addToCart("1");
     storage.addToCart("2");
     storage.cartClear();
