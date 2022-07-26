@@ -18,7 +18,7 @@ const ships = require('./stabs/correct.json').spacecrafts as Array<ISpaceshipDat
 test('products.view should write how much products in cart within cart-count element', () => {
     const cart = new Set<string>(['1', '2', '5', '9']);
     products.view([], cart);
-    expect(cartCounter.innerHTML).toEqual('4');
+    expect(cartCounter.innerText).toEqual('4');
 });
 
 test('products.view should add cards to products-conteiner', () => {

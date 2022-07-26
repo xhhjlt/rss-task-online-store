@@ -70,19 +70,19 @@ class Filters implements IFiltersView {
 
     getFilters(): ISpaceshipFilters {
         const result: ISpaceshipFilters = {};
-        result.manufacturer = new Set<Country>();
-        if (this.ussr.checked) result.manufacturer.add(Country.ussr);
-        if (this.usa.checked) result.manufacturer.add(Country.usa);
-        if (this.china.checked) result.manufacturer.add(Country.china);
-        if (this.eu.checked) result.manufacturer.add(Country.eu);
-        result.type = new Set<SpaceflightTypes>();
-        if (this.orbital.checked) result.type.add(SpaceflightTypes.orbital);
-        if (this.interplanetary.checked) result.type.add(SpaceflightTypes.interplanetary);
-        if (this.interstellar.checked) result.type.add(SpaceflightTypes.interstellar);
-        result.landing = new Set<LandingType>();
-        if (this.soft.checked) result.landing.add(LandingType.soft);
-        if (this.crash.checked) result.landing.add(LandingType.crash);
-        if (this.none.checked) result.landing.add(LandingType.none);
+        result.manufacturer = [];
+        if (this.ussr.checked) result.manufacturer.push(Country.ussr);
+        if (this.usa.checked) result.manufacturer.push(Country.usa);
+        if (this.china.checked) result.manufacturer.push(Country.china);
+        if (this.eu.checked) result.manufacturer.push(Country.eu);
+        result.type = [];
+        if (this.orbital.checked) result.type.push(SpaceflightTypes.orbital);
+        if (this.interplanetary.checked) result.type.push(SpaceflightTypes.interplanetary);
+        if (this.interstellar.checked) result.type.push(SpaceflightTypes.interstellar);
+        result.landing = [];
+        if (this.soft.checked) result.landing.push(LandingType.soft);
+        if (this.crash.checked) result.landing.push(LandingType.crash);
+        if (this.none.checked) result.landing.push(LandingType.none);
         result.inFlight = this.flight?.checked;
         result.search = this.search.value;
         const crewRange: Array<number> = this.crewSlider.get(true) as Array<number>;
@@ -117,16 +117,16 @@ class Filters implements IFiltersView {
     }
 
     drawFilters(filters: ISpaceshipFilters): void {
-        this.ussr.checked = Boolean(filters.manufacturer?.has(Country.ussr));
-        this.usa.checked = Boolean(filters.manufacturer?.has(Country.usa));
-        this.china.checked = Boolean(filters.manufacturer?.has(Country.china));
-        this.eu.checked = Boolean(filters.manufacturer?.has(Country.eu));
-        this.orbital.checked = Boolean(filters.type?.has(SpaceflightTypes.orbital));
-        this.interplanetary.checked = Boolean(filters.type?.has(SpaceflightTypes.interplanetary));
-        this.interstellar.checked = Boolean(filters.type?.has(SpaceflightTypes.interstellar));
-        this.soft.checked = Boolean(filters.landing?.has(LandingType.soft));
-        this.crash.checked = Boolean(filters.landing?.has(LandingType.crash));
-        this.none.checked = Boolean(filters.landing?.has(LandingType.none));
+        this.ussr.checked = Boolean(filters.manufacturer?.includes(Country.ussr));
+        this.usa.checked = Boolean(filters.manufacturer?.includes(Country.usa));
+        this.china.checked = Boolean(filters.manufacturer?.includes(Country.china));
+        this.eu.checked = Boolean(filters.manufacturer?.includes(Country.eu));
+        this.orbital.checked = Boolean(filters.type?.includes(SpaceflightTypes.orbital));
+        this.interplanetary.checked = Boolean(filters.type?.includes(SpaceflightTypes.interplanetary));
+        this.interstellar.checked = Boolean(filters.type?.includes(SpaceflightTypes.interstellar));
+        this.soft.checked = Boolean(filters.landing?.includes(LandingType.soft));
+        this.crash.checked = Boolean(filters.landing?.includes(LandingType.crash));
+        this.none.checked = Boolean(filters.landing?.includes(LandingType.none));
         this.flight.checked = Boolean(filters.inFlight);
         this.sort.value = filters.sort ? filters.sort.toString() : '1';
         this.search.value = filters.search || '';

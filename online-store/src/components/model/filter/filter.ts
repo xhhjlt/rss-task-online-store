@@ -7,18 +7,18 @@ class Filter implements IFilter<ISpaceshipFilters, ISpaceshipData> {
     use(ships: Array<ISpaceshipData>, currentFilters: ISpaceshipFilters): Array<ISpaceshipData> {
         return ships.filter((ship: ISpaceshipData): boolean => {
             if (currentFilters.manufacturer) {
-                if (!currentFilters.manufacturer.has(ship.manufacturer)
-                    && currentFilters.manufacturer.size > 0)
+                if (!currentFilters.manufacturer.includes(ship.manufacturer)
+                    && currentFilters.manufacturer.length > 0)
                     return false;
             }
             if (currentFilters.type) {
-                if (!currentFilters.type.has(ship.type)
-                    && currentFilters.type.size > 0)
+                if (!currentFilters.type.includes(ship.type)
+                    && currentFilters.type.length > 0)
                     return false;
             }
             if (currentFilters.landing) {
-                if (!currentFilters.landing.has(ship.landing)
-                    && currentFilters.landing.size > 0)
+                if (!currentFilters.landing.includes(ship.landing)
+                    && currentFilters.landing.length > 0)
                     return false;
             }
             if (currentFilters.inFlight) {

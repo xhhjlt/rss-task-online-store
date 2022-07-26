@@ -19,7 +19,8 @@ class Loader implements ILoader<ISpaceshipData> {
         }
     }
 
-    validate(ships: Array<ISpaceshipData>): Array<ISpaceshipData> {
+    validate(shipsArr: Array<ISpaceshipData>): Array<ISpaceshipData> {
+        const ships = shipsArr.slice();
         ships.forEach((ship: ISpaceshipData) => {
             switch (ship.manufacturer.trim().toUpperCase()) {
             case 'СССР':

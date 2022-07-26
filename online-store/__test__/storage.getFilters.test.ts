@@ -12,12 +12,12 @@ const filters: ISpaceshipFilters = {
     crewMax: 2,
     crewMin: 1,
     inFlight: false,
-    landing: new Set([LandingType.soft]),
+    landing: [LandingType.soft],
     launchYearMax: 2015,
     launchYearMin: 1964,
-    manufacturer: new Set([ Country.china, Country.usa]),
+    manufacturer: [ Country.china, Country.usa],
     search: '',
-    type: new Set([SpaceflightTypes.interplanetary]),
+    type: [SpaceflightTypes.interplanetary],
     sort: spaceshipSortOptions.crewBackward
 };
 

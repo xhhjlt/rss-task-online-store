@@ -13,7 +13,7 @@ test('filter.use() should return empty array if no elements matches filters', ()
 });
 
 test('filter.use() should return array with elements matches manufacturer', () => {
-    const manufacturer = new Set<Country>([Country.eu]);
+    const manufacturer = [Country.eu];
     expect(filter.use(ships, {manufacturer})).toEqual([{
         'id': 10,
         'name': 'Гюйгенс',
@@ -77,7 +77,7 @@ test('filter.use() should return array with elements matches "search" substring 
 });
 
 test('filter.use() should return array with elements matches landing', () => {
-    const landing = new Set<LandingType>([LandingType.crash, LandingType.none]);
+    const landing = [LandingType.crash, LandingType.none];
     expect(filter.use(ships, {landing})).toEqual([
         {
             'id': 3,
