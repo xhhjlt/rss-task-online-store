@@ -6,7 +6,7 @@ class Loader implements ILoader<ISpaceshipData> {
     getData(): Array<ISpaceshipData> {
         let data: { spacecrafts: Array<ISpaceshipData> };
         try {
-            data = require('./warehouse.json');
+            data = require('../../../public/warehouse.json');
         } catch (e) {
             console.error('Error: Don\'t have access to file or file not exist');
             return [];
