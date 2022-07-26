@@ -9,7 +9,9 @@ class Products implements IProductsView < ISpaceshipData > {
     }
 
     view(ships: Array <ISpaceshipData> , storeCart: Set<string>): void {
-        this.conteiner.innerText = '';
+        while (this.conteiner.firstChild) {
+            this.conteiner.removeChild(this.conteiner.firstChild);
+        }
         ships.forEach((ship) => this.conteiner.appendChild(this.drawCard(ship, storeCart)));
         const cartCounter: HTMLElement = document.querySelector('.cart-count') as HTMLElement;
         cartCounter.innerText = storeCart.size.toString();
