@@ -55,7 +55,7 @@ class Controller implements IController {
     cardClickHandler(event: Event): void {
         if (event.target instanceof HTMLElement) {
             const card: HTMLElement = event.target.closest('.card') as HTMLElement;
-            if (this.model.storage.getAmountInCart() >= 20) {
+            if (this.model.storage.getAmountInCart() >= 9) {
                 alert('Извините, все слоты заполнены');
                 return;
             }
