@@ -5,12 +5,14 @@ class Loader implements ILoader<ISpaceshipData> {
 
     getData(): Array<ISpaceshipData> {
         let data: { spacecrafts: Array<ISpaceshipData> };
+
         try {
             data = require('../../../public/warehouse.json');
         } catch (e) {
             console.error('Error: Don\'t have access to file or file not exist');
             return [];
         }
+
         if (data?.spacecrafts && Array.isArray(data?.spacecrafts)) {
             return this.validate(data.spacecrafts);
         } else {
@@ -38,6 +40,7 @@ class Loader implements ILoader<ISpaceshipData> {
                 ship.type = SpaceflightTypes.unknown;
                 break;
             }
+
             switch (ship.type.trim().toLowerCase()) {
             case 'орбитальный':
                 ship.type = SpaceflightTypes.orbital;
@@ -52,6 +55,7 @@ class Loader implements ILoader<ISpaceshipData> {
                 ship.type = SpaceflightTypes.unknown;
                 break;
             }
+
             switch (ship.landing.trim().toLowerCase()) {
             case 'мягкая':
                 ship.landing = LandingType.soft;
@@ -66,6 +70,7 @@ class Loader implements ILoader<ISpaceshipData> {
                 ship.landing = LandingType.unknown;
                 break;
             }
+            
             return ship;
         });
     }

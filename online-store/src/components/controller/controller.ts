@@ -19,7 +19,6 @@ class Controller implements IController {
 
         if (!this.view.products.conteiner.firstChild) {
             const message: HTMLElement = document.createElement('h4');
-
             message.classList.add('card');
             message.innerText = 'Извините, совпадений не обнаружено';
             this.view.products.conteiner.append(message);
@@ -56,7 +55,7 @@ class Controller implements IController {
             this.view.filters.crewLabel.innerText = `${range[0]} - ${range[1]}`;
             this.inputHandler();
         });
-        
+
         this.view.filters.yearSlider.on('update', () => {
             const range: Array<number>  = this.view.filters.yearSlider.get(true) as Array<number>;
             this.view.filters.yearLabel.innerText = `${range[0]} - ${range[1]}`;
