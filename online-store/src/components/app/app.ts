@@ -1,5 +1,5 @@
-import Controller from "../controller/controller";
-import IApp from "./IApp";
+import Controller from '../controller/controller';
+import IApp from './IApp';
 
 class App implements IApp {
     controller: Controller;

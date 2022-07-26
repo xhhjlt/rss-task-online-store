@@ -1,7 +1,7 @@
-import { Country, LandingType, SpaceflightTypes } from "../../model/data/ISpaceshipData";
-import ISpaceshipFilters from "../../model/data/ISpaceshipFilters";
-import spaceshipSortOptions from "../../model/data/spaceshipSortOptions";
-import IFiltersView from "./IFiltersView";
+import { Country, LandingType, SpaceflightTypes } from '../../model/data/ISpaceshipData';
+import ISpaceshipFilters from '../../model/data/ISpaceshipFilters';
+import spaceshipSortOptions from '../../model/data/spaceshipSortOptions';
+import IFiltersView from './IFiltersView';
 import * as noUiSlider from 'nouislider';
 import 'nouislider/dist/nouislider.css';
 
@@ -28,21 +28,21 @@ class Filters implements IFiltersView {
     resetAll: HTMLElement;
 
     constructor() {
-        this.conteiner = document.querySelector(".filters-conteiner") as HTMLElement;
-        this.ussr = document.querySelector("#ussr") as HTMLInputElement;
-        this.usa = document.querySelector("#usa") as HTMLInputElement;
-        this.china = document.querySelector("#china") as HTMLInputElement;
-        this.eu = document.querySelector("#eu") as HTMLInputElement;
-        this.orbital = document.querySelector("#orbital") as HTMLInputElement;
-        this.interplanetary = document.querySelector("#interplanetary") as HTMLInputElement;
-        this.interstellar = document.querySelector("#interstellar") as HTMLInputElement;
-        this.soft = document.querySelector("#soft") as HTMLInputElement;
-        this.crash = document.querySelector("#crash") as HTMLInputElement;
-        this.none = document.querySelector("#none") as HTMLInputElement;
-        const year: HTMLElement = document.getElementById("year") as HTMLElement;
-        const crew: HTMLElement = document.getElementById("crew") as HTMLElement;
-        this.crewLabel = document.querySelector(".crew-label") as HTMLElement;
-        this.yearLabel = document.querySelector(".year-label") as HTMLElement;
+        this.conteiner = document.querySelector('.filters-conteiner') as HTMLElement;
+        this.ussr = document.querySelector('#ussr') as HTMLInputElement;
+        this.usa = document.querySelector('#usa') as HTMLInputElement;
+        this.china = document.querySelector('#china') as HTMLInputElement;
+        this.eu = document.querySelector('#eu') as HTMLInputElement;
+        this.orbital = document.querySelector('#orbital') as HTMLInputElement;
+        this.interplanetary = document.querySelector('#interplanetary') as HTMLInputElement;
+        this.interstellar = document.querySelector('#interstellar') as HTMLInputElement;
+        this.soft = document.querySelector('#soft') as HTMLInputElement;
+        this.crash = document.querySelector('#crash') as HTMLInputElement;
+        this.none = document.querySelector('#none') as HTMLInputElement;
+        const year: HTMLElement = document.getElementById('year') as HTMLElement;
+        const crew: HTMLElement = document.getElementById('crew') as HTMLElement;
+        this.crewLabel = document.querySelector('.crew-label') as HTMLElement;
+        this.yearLabel = document.querySelector('.year-label') as HTMLElement;
         this.yearSlider = noUiSlider.create(year, {
             start: [1950, 2022],
             connect: true,
@@ -61,11 +61,11 @@ class Filters implements IFiltersView {
             },
             step: 1,
         });
-        this.flight = document.querySelector("#flight") as HTMLInputElement;
-        this.search = document.querySelector("#search") as HTMLInputElement;
-        this.sort = document.querySelector("#sort") as HTMLInputElement;
-        this.resetFilters = document.querySelector(".reset-filters") as HTMLElement;
-        this.resetAll = document.querySelector(".reset-all") as HTMLElement; 
+        this.flight = document.querySelector('#flight') as HTMLInputElement;
+        this.search = document.querySelector('#search') as HTMLInputElement;
+        this.sort = document.querySelector('#sort') as HTMLInputElement;
+        this.resetFilters = document.querySelector('.reset-filters') as HTMLElement;
+        this.resetAll = document.querySelector('.reset-all') as HTMLElement; 
     }
 
     getFilters(): ISpaceshipFilters {
@@ -90,27 +90,27 @@ class Filters implements IFiltersView {
         const yearRange: Array<number> = this.yearSlider.get(true) as Array<number>;
         [result.launchYearMin, result.launchYearMax] = yearRange;
         switch (this.sort.value) {
-            case "1":
-                result.sort = spaceshipSortOptions.nameForward;
-                break;
-            case "2":
-                result.sort = spaceshipSortOptions.nameBackward;
-                break;
-            case "3":
-                result.sort = spaceshipSortOptions.yearForward;
-                break;
-            case "4":
-                result.sort = spaceshipSortOptions.yearBackward;
-                break;
-            case "5":
-                result.sort = spaceshipSortOptions.crewForward;
-                break;
-            case "6":
-                result.sort = spaceshipSortOptions.crewBackward;
-                break;
-            default:
-                result.sort = spaceshipSortOptions.nameForward;
-                break;
+        case '1':
+            result.sort = spaceshipSortOptions.nameForward;
+            break;
+        case '2':
+            result.sort = spaceshipSortOptions.nameBackward;
+            break;
+        case '3':
+            result.sort = spaceshipSortOptions.yearForward;
+            break;
+        case '4':
+            result.sort = spaceshipSortOptions.yearBackward;
+            break;
+        case '5':
+            result.sort = spaceshipSortOptions.crewForward;
+            break;
+        case '6':
+            result.sort = spaceshipSortOptions.crewBackward;
+            break;
+        default:
+            result.sort = spaceshipSortOptions.nameForward;
+            break;
         }
 
         return result;
@@ -128,8 +128,8 @@ class Filters implements IFiltersView {
         this.crash.checked = Boolean(filters.landing?.has(LandingType.crash));
         this.none.checked = Boolean(filters.landing?.has(LandingType.none));
         this.flight.checked = Boolean(filters.inFlight);
-        this.sort.value = filters.sort ? filters.sort.toString() : "1";
-        this.search.value = filters.search || "";
+        this.sort.value = filters.sort ? filters.sort.toString() : '1';
+        this.search.value = filters.search || '';
         this.crewSlider.set([(filters.crewMin ? filters.crewMin : 0) , (filters.crewMax ? filters.crewMax : 3)]);
         this.yearSlider.set([(filters.launchYearMin ? filters.launchYearMin : 1950) , (filters.launchYearMax ? filters.launchYearMax : 2022)]);
     }

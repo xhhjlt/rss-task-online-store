@@ -1,6 +1,6 @@
-import { Set } from "typescript";
-import { Country, LandingType, SpaceflightTypes } from "./ISpaceshipData";
-import spaceshipSortOptions from "./spaceshipSortOptions";
+import { Set } from 'typescript';
+import { Country, LandingType, SpaceflightTypes } from './ISpaceshipData';
+import spaceshipSortOptions from './spaceshipSortOptions';
 
 interface ISpaceshipFilters {
     manufacturer?: Set<Country>;

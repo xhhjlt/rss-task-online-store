@@ -1,4 +1,4 @@
-import ILoader from "../data/ILoader";
+import ILoader from '../data/ILoader';
 
 interface IDataStorage<ProductType, FiltersType> {
     all: Array<ProductType>;

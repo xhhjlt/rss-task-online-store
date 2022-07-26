@@ -1,9 +1,9 @@
-import { Country, LandingType, SpaceflightTypes } from "../src/components/model/data/ISpaceshipData";
-import Loader from "../src/components/model/data/loader";
+import { Country, LandingType, SpaceflightTypes } from '../src/components/model/data/ISpaceshipData';
+import Loader from '../src/components/model/data/loader';
 
 const loader = new Loader();
 
-test("loader.validate() should return data whith enum type for manufacturer, type and landing fields", () => {
+test('loader.validate() should return data whith enum type for manufacturer, type and landing fields', () => {
     expect(loader.validate(JSON.parse(`[{
         "id": 10,
         "name": "Гюйгенс",
@@ -28,6 +28,6 @@ test("loader.validate() should return data whith enum type for manufacturer, typ
         type: SpaceflightTypes.interplanetary,
         landing: LandingType.soft,
         inFlight: false
-      }])
-})
+    }]);
+});
 

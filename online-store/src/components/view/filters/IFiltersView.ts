@@ -1,4 +1,4 @@
-import ISpaceshipFilters from "../../model/data/ISpaceshipFilters";
+import ISpaceshipFilters from '../../model/data/ISpaceshipFilters';
 
 interface IFiltersView {
     getFilters: () => ISpaceshipFilters;

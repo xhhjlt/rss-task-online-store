@@ -1,33 +1,33 @@
-import ISpaceshipData from "../data/ISpaceshipData";
-import ISpaceshipFilters from "../data/ISpaceshipFilters";
-import spaceshipSortOptions from "../data/spaceshipSortOptions";
-import ISorter from "./ISorter";
+import ISpaceshipData from '../data/ISpaceshipData';
+import ISpaceshipFilters from '../data/ISpaceshipFilters';
+import spaceshipSortOptions from '../data/spaceshipSortOptions';
+import ISorter from './ISorter';
 
 class Sorter implements ISorter<ISpaceshipFilters, ISpaceshipData> {
 
     sort(ships: Array<ISpaceshipData> = [], filters : ISpaceshipFilters): Array<ISpaceshipData> {
         switch (filters.sort) {
-            case spaceshipSortOptions.nameForward:
-                ships.sort(this.byName);
-                break;
-            case spaceshipSortOptions.nameBackward:
-                ships.sort(this.byNameBack);
-                break;
-            case spaceshipSortOptions.yearForward:
-                ships.sort(this.byYear);
-                break;
-            case spaceshipSortOptions.yearBackward:
-                ships.sort(this.byYearBack);
-                break;
-            case spaceshipSortOptions.crewForward:
-                ships.sort(this.byCrew);
-                break;
-            case spaceshipSortOptions.crewBackward:
-                ships.sort(this.byCrewBack);
-                break;
-            default:
-                ships.sort(this.byName);
-                break;
+        case spaceshipSortOptions.nameForward:
+            ships.sort(this.byName);
+            break;
+        case spaceshipSortOptions.nameBackward:
+            ships.sort(this.byNameBack);
+            break;
+        case spaceshipSortOptions.yearForward:
+            ships.sort(this.byYear);
+            break;
+        case spaceshipSortOptions.yearBackward:
+            ships.sort(this.byYearBack);
+            break;
+        case spaceshipSortOptions.crewForward:
+            ships.sort(this.byCrew);
+            break;
+        case spaceshipSortOptions.crewBackward:
+            ships.sort(this.byCrewBack);
+            break;
+        default:
+            ships.sort(this.byName);
+            break;
         }
         return ships;
     }

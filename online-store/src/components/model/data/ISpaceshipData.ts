@@ -1,25 +1,25 @@
-import IProductData from "./IProductData";
+import IProductData from './IProductData';
 
 export enum SpaceflightTypes {
-    orbital = "орбитальный",
-    interplanetary = "межпланетный",
-    interstellar = "межзвездный",
-    unknown = "неизвестно"
+    orbital = 'орбитальный',
+    interplanetary = 'межпланетный',
+    interstellar = 'межзвездный',
+    unknown = 'неизвестно'
 }
 
 export enum LandingType {
-    soft = "мягкая",
-    crash = "жесткая",
-    none = "нет",
-    unknown = "неизвестно"
+    soft = 'мягкая',
+    crash = 'жесткая',
+    none = 'нет',
+    unknown = 'неизвестно'
 }
 
 export enum Country {
-    ussr = "СССР",
-    usa = "США",
-    china = "КНР",
-    eu = "ЕС",
-    unknown = "НЕИЗВЕСТНО"
+    ussr = 'СССР',
+    usa = 'США',
+    china = 'КНР',
+    eu = 'ЕС',
+    unknown = 'НЕИЗВЕСТНО'
 }
 
 interface ISpaceshipData extends IProductData {

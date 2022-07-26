@@ -5,70 +5,70 @@ const ESLintPlugin = require('eslint-webpack-plugin');
 
 let mode = 'development';
 if (process.env.NODE_ENV === 'production') {
-  mode = 'production';
+    mode = 'production';
 }
 
 
 const plugins = [
-  new HtmlWebpackPlugin({
-    template: './src/index.html',
-  }),
-  new MiniCssExtractPlugin({
-    filename: '[name].[contenthash].css',
-  }),
-  new ESLintPlugin({
-    extensions: ['.tsx', '.ts', '.js'],
-    exclude: 'node_modules'
- }),
+    new HtmlWebpackPlugin({
+        template: './src/index.html',
+    }),
+    new MiniCssExtractPlugin({
+        filename: '[name].[contenthash].css',
+    }),
+    new ESLintPlugin({
+        extensions: ['.tsx', '.ts', '.js'],
+        exclude: 'node_modules'
+    }),
 ];
 
 
 module.exports = {
-  mode,
-  plugins,
-  entry: './src/index.ts',
-  devtool: 'inline-source-map',
-  resolve: {
-    extensions: ['.tsx', '.ts', '.js'],
-  },
-  output: {
-    path: path.resolve(__dirname, 'dist'),
-    assetModuleFilename: 'assets/[hash][ext][query]',
-    clean: true,
-  },
+    mode,
+    plugins,
+    entry: './src/index.ts',
+    devtool: 'inline-source-map',
+    resolve: {
+        extensions: ['.tsx', '.ts', '.js'],
+    },
+    output: {
+        path: path.resolve(__dirname, 'dist'),
+        assetModuleFilename: 'assets/[hash][ext][query]',
+        clean: true,
+    },
 
-  devServer: {
-    static: path.resolve(__dirname, './dist'),
-  },
+    devServer: {
+        static: path.resolve(__dirname, './dist'),
+    },
 
-  module: {
-    rules: [
-      {
-        test: /\.(html)$/i,
-        use: 'html-loader',
-      },
-      {
-        test: /\.[tj]sx?$/i,
-        use: 'ts-loader',
-        exclude: /node_modules/,
-      },
-      {
-        test: /\.(s[ac]|c)ss$/i,
-        use: [
-          MiniCssExtractPlugin.loader,
-          'css-loader',
-          'sass-loader',
+    module: {
+        rules: [
+            {
+                test: /\.(html)$/i,
+                use: 'html-loader',
+            },
+            {
+                test: /\.[tj]sx?$/i,
+                use: 'ts-loader',
+                exclude: /node_modules/,
+            },
+            {
+                test: /\.(s[ac]|c)ss$/i,
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    'css-loader',
+                    'sass-loader',
+                ],
+            },
+            {
+                test: /\.(png|jpe?g|gif|svg|webp|ico)$/i,
+                type: mode === 'production' ? 'asset' : 'asset/resource',
+            },
+            {
+                test: /\.(woff2?|eot|ttf|otf)$/i,
+                type: 'asset/resource',
+            },
         ],
-      },
-      {
-        test: /\.(png|jpe?g|gif|svg|webp|ico)$/i,
-        type: mode === 'production' ? 'asset' : 'asset/resource',
-      },
-      {
-        test: /\.(woff2?|eot|ttf|otf)$/i,
-        type: 'asset/resource',
-      },
-    ],
 
-  }
-}
+    }
+};

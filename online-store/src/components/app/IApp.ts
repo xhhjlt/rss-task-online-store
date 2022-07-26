@@ -1,4 +1,4 @@
-import IController from "../controller/IController";
+import IController from '../controller/IController';
 
 interface IApp {
     controller: IController;
