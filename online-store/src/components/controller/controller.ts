@@ -46,9 +46,9 @@ class Controller implements IController {
         }
     }
 
-    init() {
+    init = () => {
         this.view.filters.drawFilters(this.model.storage.getFilters());
-        this.view.filters.conteiner.addEventListener('input', this.inputHandler);
+        this.view.filters.conteiner.addEventListener('input', () => this.inputHandler());
 
         this.view.filters.crewSlider.on('update', () => {
             const range: Array<number>  = this.view.filters.crewSlider.get(true) as Array<number>;
@@ -80,7 +80,7 @@ class Controller implements IController {
         this.view.products.conteiner.addEventListener('click', (event: Event) => this.cardClickHandler(event));
 
         this.view.products.view(this.model.getData(), this.model.storage.cart);
-    }
+    };
 }
 
 export default Controller;
