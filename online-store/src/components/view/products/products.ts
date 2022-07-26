@@ -8,20 +8,20 @@ class Products implements IProductsView < ISpaceshipData > {
         this.conteiner = document.querySelector('.products-conteiner') as HTMLElement;
     }
 
-    view(ships: Array <ISpaceshipData> , storeCart: Set<string>): void {
+    view(ships: Array <ISpaceshipData> , storeCart: Array<string>): void {
         while (this.conteiner.firstChild) {
             this.conteiner.removeChild(this.conteiner.firstChild);
         }
         ships.forEach((ship) => this.conteiner.appendChild(this.drawCard(ship, storeCart)));
         const cartCounter: HTMLElement = document.querySelector('.cart-count') as HTMLElement;
-        cartCounter.innerText = storeCart.size.toString();
+        cartCounter.innerText = storeCart.length.toString();
     }
 
-    drawCard(ship: ISpaceshipData, storeCart: Set<string>): HTMLElement {
+    drawCard(ship: ISpaceshipData, storeCart: Array<string>): HTMLElement {
         const card: HTMLElement = document.createElement('div');
         card.classList.add('card');
         card.setAttribute('shipID', ship.id.toString());
-        if (storeCart.has(ship.id.toString())) card.classList.add('in-cart');
+        if (storeCart.includes(ship.id.toString())) card.classList.add('in-cart');
         const header: HTMLElement = document.createElement('h4');
         header.innerText = ship.name;
         card.append(header);

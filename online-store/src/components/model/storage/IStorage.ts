@@ -2,7 +2,7 @@ import ILoader from '../data/ILoader';
 
 interface IDataStorage<ProductType, FiltersType> {
     all: Array<ProductType>;
-    cart: Set<string>;
+    cart: Array<string>;
     loader: ILoader<ProductType>;
 
     addToCart: (product: string) => void;

@@ -1,6 +1,6 @@
 
 interface IProductsView<ProductType> {
-    view: (products: Array<ProductType>, cart: Set<string>) => void;
+    view: (products: Array<ProductType>, cart: Array<string>) => void;
 }
 
 export default IProductsView;

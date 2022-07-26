@@ -6,12 +6,12 @@ import DataStorage from '../src/components/model/storage/storage';
 
 const storage = new DataStorage();
 
-test('storage.addToCart(str) should add str to storage.cart set', () => {
+test('storage.addToCart(str) should add str to storage.cart arr', () => {
     storage.addToCart('anystring');
-    expect(storage.cart.has('anystring')).toEqual(true);
+    expect(storage.cart.includes('anystring')).toEqual(true);
 });
 
-test('storage.addToCart(str) should add "str" to localStorage', () => {
+test('storage.addToCart(str) should add "str" to "cart" in localStorage', () => {
     storage.addToCart('42');
-    expect(localStorage.getItem('42')).toBeTruthy();
+    expect(JSON.parse(localStorage.getItem('cart') || '[]').includes('42')).toBeTruthy();
 });

@@ -16,19 +16,16 @@ const products = new Products;
 const ships = require('./stabs/correct.json').spacecrafts as Array<ISpaceshipData>;
 
 test('products.view should write how much products in cart within cart-count element', () => {
-    const cart = new Set<string>(['1', '2', '5', '9']);
-    products.view([], cart);
+    products.view([], ['1', '2', '5', '9']);
     expect(cartCounter.innerText).toEqual('4');
 });
 
 test('products.view should add cards to products-conteiner', () => {
-    const cart = new Set<string>();
-    products.view(ships.slice(0,2), cart);
+    products.view(ships.slice(0,2), []);
     expect(conteiner.querySelectorAll('.card')).toHaveLength(2);
 });
 
 test('products.view should add class in-cart for each card, which product in cart', () => {
-    const cart = new Set<string>(['1', '2', '5', '9']);
-    products.view(ships, cart);
+    products.view(ships, ['1', '2', '5', '9']);
     expect(conteiner.querySelectorAll('.card.in-cart')).toHaveLength(4);
 });
