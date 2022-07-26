@@ -9,48 +9,59 @@ class Products implements IProductsView < ISpaceshipData > {
     }
 
     view(ships: Array <ISpaceshipData> , storeCart: Array<string>): void {
+        const cartCounter: HTMLElement = document.querySelector('.cart-count') as HTMLElement;
+
         while (this.conteiner.firstChild) {
             this.conteiner.removeChild(this.conteiner.firstChild);
         }
         ships.forEach((ship) => this.conteiner.appendChild(this.drawCard(ship, storeCart)));
-        const cartCounter: HTMLElement = document.querySelector('.cart-count') as HTMLElement;
         cartCounter.innerText = storeCart.length.toString();
     }
 
     drawCard(ship: ISpaceshipData, storeCart: Array<string>): HTMLElement {
         const card: HTMLElement = document.createElement('div');
-        card.classList.add('card');
-        card.setAttribute('shipID', ship.id.toString());
-        if (storeCart.includes(ship.id.toString())) card.classList.add('in-cart');
         const header: HTMLElement = document.createElement('h4');
-        header.innerText = ship.name;
-        card.append(header);
         const img: HTMLImageElement = document.createElement('img');
-        img.src = require(`../../../img/${ship.image}`);
-        card.append(img);
         const description: HTMLElement = document.createElement('p');
-        description.innerText = ship.description;
-        card.append(description);
         const quote: HTMLElement = document.createElement('p');
-        quote.classList.add('quote');
-        quote.innerText = `${ship.quote}`;
-        card.append(quote);
         const features: HTMLElement = document.createElement('div');
-        features.classList.add('features');
         const feat1: HTMLElement = document.createElement('p');
         const feat2: HTMLElement = document.createElement('p');
         const feat3: HTMLElement = document.createElement('p');
+        const cart: HTMLElement = document.createElement('div');
+        const cartIcon: HTMLImageElement = document.createElement('img');
+
+        card.classList.add('card');
+        card.setAttribute('shipID', ship.id.toString());
+        if (storeCart.includes(ship.id.toString())) {
+            card.classList.add('in-cart');
+        }
+
+        header.innerText = ship.name;
+        card.append(header);
+
+        img.src = require(`../../../img/${ship.image}`);
+        card.append(img);
+
+        description.innerText = ship.description;
+        card.append(description);
+
+        quote.classList.add('quote');
+        quote.innerText = `${ship.quote}`;
+        card.append(quote);
+
+        features.classList.add('features');
         feat1.innerText = `Страна: ${ship.manufacturer} | Год запуска: ${ship.launchYear}`;
         feat2.innerText = `Экипаж: ${ship.crew} | Тип: ${ship.type}`;
         feat3.innerText = `Посадка: ${ship.landing} | В полете: ${ship.inFlight ? 'Да' : 'нет'}`;
         features.append(feat1, feat2, feat3);
         card.append(features);
-        const cart: HTMLElement = document.createElement('div');
+
         cart.classList.add('card-buttons');
-        const cartIcon: HTMLImageElement = document.createElement('img');
         cartIcon.src = require('../../../img/cart.svg');
         cart.append(cartIcon);
         card.append(cart);
+
         return card;
     }
 }
