@@ -19,9 +19,8 @@ class Loader implements ILoader<ISpaceshipData> {
         }
     }
 
-    validate(shipsArr: Array<ISpaceshipData>): Array<ISpaceshipData> {
-        const ships = shipsArr.slice();
-        ships.forEach((ship: ISpaceshipData) => {
+    validate(ships: Array<ISpaceshipData>): Array<ISpaceshipData> {
+        return ships.map((ship: ISpaceshipData) => {
             switch (ship.manufacturer.trim().toUpperCase()) {
             case 'СССР':
                 ship.manufacturer = Country.ussr;
@@ -67,8 +66,8 @@ class Loader implements ILoader<ISpaceshipData> {
                 ship.landing = LandingType.unknown;
                 break;
             }
+            return ship;
         });
-        return ships;    
     }
     
 }
