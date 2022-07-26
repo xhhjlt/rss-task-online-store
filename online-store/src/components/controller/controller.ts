@@ -16,11 +16,11 @@ class Controller implements IController {
         this.view.filters.yearSlider.on("change", () => this.inputHandler());
         this.view.filters.crewSlider.on("update", () => {
             const range: Array<number>  = this.view.filters.crewSlider.get(true) as Array<number>;
-            this.view.filters.crewLabel.innerHTML = `${range[0]} - ${range[1]}`;
+            this.view.filters.crewLabel.innerText = `${range[0]} - ${range[1]}`;
         });
         this.view.filters.yearSlider.on("update", () => {
             const range: Array<number>  = this.view.filters.yearSlider.get(true) as Array<number>;
-            this.view.filters.yearLabel.innerHTML = `${range[0]} - ${range[1]}`;
+            this.view.filters.yearLabel.innerText = `${range[0]} - ${range[1]}`;
         });
         this.view.filters.yearSlider.on("update", () => this.inputHandler());
         this.view.filters.resetFilters.addEventListener("click", () => {
@@ -32,7 +32,7 @@ class Controller implements IController {
             this.model.storage.setFilters({});
             this.model.storage.cartClear();
             const cartCounter: HTMLElement = document.querySelector(".cart-count") as HTMLElement;
-            cartCounter.innerHTML = '0';
+            cartCounter.innerText = '0';
             this.view.filters.search.value = '';
             this.view.filters.drawFilters(this.model.storage.getFilters());
         })
@@ -45,9 +45,9 @@ class Controller implements IController {
         this.model.storage.setFilters(this.view.filters.getFilters());
         this.view.products.view(this.model.getData(), this.model.storage.cart)
         if (!this.view.products.conteiner.firstChild) {
-            const message: HTMLElement = document.createElement("div");
+            const message: HTMLElement = document.createElement("h4");
             message.classList.add("card");
-            message.innerHTML = "<h4>Извините, совпадений не обнаружено</h4>";
+            message.innerText = "Извините, совпадений не обнаружено";
             this.view.products.conteiner.append(message);
         }
     }
@@ -66,7 +66,7 @@ class Controller implements IController {
                 this.model.storage.removeFromCart(cardID)
             }
             const cartCounter: HTMLElement = document.querySelector(".cart-count") as HTMLElement;
-            cartCounter.innerHTML =  this.model.storage.getAmountInCart().toString();
+            cartCounter.innerText =  this.model.storage.getAmountInCart().toString();
         }
     }
 }
