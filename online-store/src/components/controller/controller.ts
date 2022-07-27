@@ -7,12 +7,12 @@ class Controller implements IController {
     model: Model;
     view: View;
 
-    constructor () {
+    constructor() {
         this.model = new Model();
         this.view = new View();
     }
 
-    inputHandler(): void {
+    inputHandler: () => void = () => {
         this.model.storage.setFilters(this.view.filters.getFilters());
 
         this.view.products.view(this.model.getData(), this.model.storage.cart);
@@ -23,9 +23,9 @@ class Controller implements IController {
             message.innerText = 'Извините, совпадений не обнаружено';
             this.view.products.conteiner.append(message);
         }
-    }
+    };
 
-    cardClickHandler(event: Event): void {
+    cardClickHandler: (event: Event) => void = (event: Event) => {
         if (event.target instanceof HTMLElement) {
             const card: HTMLElement = event.target.closest('.card') as HTMLElement;
             const cardID: string = card?.getAttribute('shipID') + '';
@@ -44,11 +44,11 @@ class Controller implements IController {
 
             cartCounter.innerText = this.model.storage.getAmountInCart().toString();
         }
-    }
+    };
 
     init = () => {
         this.view.filters.drawFilters(this.model.storage.getFilters());
-        this.view.filters.conteiner.addEventListener('input', () => this.inputHandler());
+        this.view.filters.conteiner.addEventListener('input', this.inputHandler);
 
         this.view.filters.crewSlider.on('update', () => {
             const range: Array<number>  = this.view.filters.crewSlider.get(true) as Array<number>;
@@ -77,7 +77,7 @@ class Controller implements IController {
             this.view.filters.drawFilters(this.model.storage.getFilters());
         });
 
-        this.view.products.conteiner.addEventListener('click', (event: Event) => this.cardClickHandler(event));
+        this.view.products.conteiner.addEventListener('click', this.cardClickHandler);
 
         this.view.products.view(this.model.getData(), this.model.storage.cart);
     };
