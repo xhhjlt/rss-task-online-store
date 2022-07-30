@@ -1,5 +1,5 @@
 import ILoader from './ILoader';
-import ISpaceshipData, { Country, LandingType, SpaceflightTypes } from './ISpaceshipData';
+import ISpaceshipData from './ISpaceshipData';
 
 class Loader implements ILoader<ISpaceshipData> {
 
@@ -14,67 +14,12 @@ class Loader implements ILoader<ISpaceshipData> {
         }
 
         if (data?.spacecrafts && Array.isArray(data?.spacecrafts)) {
-            return this.validate(data.spacecrafts);
+            return data.spacecrafts;
         } else {
             console.error('Error: Wrong file format');
             return [];
         }
     }
-
-    validate(ships: Array<ISpaceshipData>): Array<ISpaceshipData> {
-        return ships.map((ship: ISpaceshipData) => {
-            switch (ship.manufacturer.trim().toUpperCase()) {
-            case 'СССР':
-                ship.manufacturer = Country.ussr;
-                break;
-            case 'США':
-                ship.manufacturer = Country.usa;
-                break;
-            case 'КНР':
-                ship.manufacturer = Country.china;
-                break;
-            case 'ЕС':
-                ship.manufacturer = Country.eu;
-                break;
-            default:
-                ship.type = SpaceflightTypes.unknown;
-                break;
-            }
-
-            switch (ship.type.trim().toLowerCase()) {
-            case 'орбитальный':
-                ship.type = SpaceflightTypes.orbital;
-                break;
-            case 'межпланетный':
-                ship.type = SpaceflightTypes.interplanetary;
-                break;
-            case 'межзвездный':
-                ship.type = SpaceflightTypes.interstellar;
-                break;
-            default:
-                ship.type = SpaceflightTypes.unknown;
-                break;
-            }
-
-            switch (ship.landing.trim().toLowerCase()) {
-            case 'мягкая':
-                ship.landing = LandingType.soft;
-                break;
-            case 'жесткая':
-                ship.landing = LandingType.crash;
-                break;
-            case 'нет':
-                ship.landing = LandingType.none;
-                break;
-            default:
-                ship.landing = LandingType.unknown;
-                break;
-            }
-            
-            return ship;
-        });
-    }
-    
 }
 
 export default Loader;
